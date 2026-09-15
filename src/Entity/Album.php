@@ -42,6 +42,9 @@ class Album
     #[ORM\JoinColumn(nullable: false)]
     private ?Artist $artist = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $img_path = null;
+
     public function __construct()
     {
         $this->tracks = new ArrayCollection();
@@ -150,6 +153,18 @@ class Album
     public function setArtist(?Artist $artist): static
     {
         $this->artist = $artist;
+
+        return $this;
+    }
+
+    public function getImgPath(): ?string
+    {
+        return $this->img_path;
+    }
+
+    public function setImgPath(?string $img_path): static
+    {
+        $this->img_path = $img_path;
 
         return $this;
     }
