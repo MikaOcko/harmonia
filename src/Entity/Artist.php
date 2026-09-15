@@ -31,6 +31,9 @@ class Artist
     #[ORM\OneToMany(targetEntity: Album::class, mappedBy: 'artist')]
     private Collection $albums;
 
+    #[ORM\Column]
+    private ?\DateTimeImmutable $createdAt = null;
+
     public function __construct()
     {
         $this->albums = new ArrayCollection();
@@ -103,6 +106,18 @@ class Artist
                 $album->setArtist(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }
