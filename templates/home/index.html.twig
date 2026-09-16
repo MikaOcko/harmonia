@@ -35,6 +35,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ ep.title }}</h5>
                             <p class="card-text">{{ ep.artist.stageName }}</p>
+                            <p>Total des morceaux : {{ ep.tracks|length }}</p>
                             <a href="{{ path('app_album', {'id': ep.id}) }}" class="btn btn-primary">Voir plus</a>
                         </div>
                     </div>
@@ -53,6 +54,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ album.title }}</h5>
                             <p class="card-text">{{ album.artist.stageName }}</p>
+                            <p>Total des morceaux : {{ album.tracks|length }}</p>
                             <a href="{{ path('app_album', {'id': album.id}) }}" class="btn btn-primary">Voir plus</a>
                         </div>
                     </div>
@@ -71,6 +73,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ single.title }}</h5>
                             <p class="card-text">{{ single.artist.stageName }}</p>
+                            <p>Total des morceaux : {{ single.tracks|length }}</p>
                             <a href="{{ path('app_album', {'id': single.id}) }}" class="btn btn-primary">Voir plus</a>
                         </div>
                     </div>
