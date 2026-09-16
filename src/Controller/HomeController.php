@@ -22,6 +22,11 @@ final class HomeController extends AbstractController
         $singleType = $albumRepo->findBy(['type' => AlbumType::SINGLE]);
         // dump($singleType);
 
+        // Retourne l'entité User connecté ou null si pas connecté
+
+        $user = $this->getUser();
+        dump($user);
+
         return $this->render('home/index.html.twig', [
             'albums' => $albums,
             'epType' => $epType,

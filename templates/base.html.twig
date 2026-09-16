@@ -35,14 +35,30 @@
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="{{ path('app_home') }}">Accueil</a>
                             </li>
-                                <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="{{ path('app_style') }}">Genres</a>
                             </li>
+
+
+                            {% if app.user %}
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{{ path('app_profile')}}">Profile</a>
+                            </li>
+                            {% endif %}
+
+                            {# Je suis connecté #}
+                            {% if app.user %}
+                                <a href="{{ path('app_logout') }}" class="btn btn-danger">Se déconnecter</a>
+                            {% else %}
+                                <a href="{{ path('app_login') }}" class="btn btn-success">Se connecter</a>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
             </nav>
         </header>
+
+        
         {% block body %}{% endblock %}
         {# Script #}
         {# Bootstrap CDN #}
