@@ -29,8 +29,8 @@
         <div class="container">
             <div class="row  gap-3">
                 {%for ep in epType %}
-
-                    <div class="card col-md-4" style="width: 18rem;">
+                    <div class="col-md-4">
+                    {# <div class="card" style="width: 18rem;">
                         <img src="{{ asset(ep.imgPath) }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{ ep.title }}</h5>
@@ -38,8 +38,12 @@
                             <p>Total des morceaux : {{ ep.tracks|length }}</p>
                             <a href="{{ path('app_album', {'id': ep.id}) }}" class="btn btn-primary">Voir plus</a>
                         </div>
+                    </div> #}
+                    {% include 'components/album-card.html.twig' with {album:ep}%}
+
                     </div>
                 {% endfor %}
+
             </div>
         </div>
     </section>
@@ -49,14 +53,18 @@
         <div class="container">
             <div class="row  gap-3">
                 {%for album in albumType %}
-                    <div class="card col-md-4" style="width: 18rem;">
-                        <img src="{{ asset(album.imgPath) }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ album.title }}</h5>
-                            <p class="card-text">{{ album.artist.stageName }}</p>
-                            <p>Total des morceaux : {{ album.tracks|length }}</p>
-                            <a href="{{ path('app_album', {'id': album.id}) }}" class="btn btn-primary">Voir plus</a>
-                        </div>
+                    <div class="col-md-4">
+
+                        {# <div class="card" style="width: 18rem;">
+                            <img src="{{ asset(album.imgPath) }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ album.title }}</h5>
+                                <p class="card-text">{{ album.artist.stageName }}</p>
+                                <p>Total des morceaux : {{ album.tracks|length }}</p>
+                                <a href="{{ path('app_album', {'id': album.id}) }}" class="btn btn-primary">Voir plus</a>
+                            </div>
+                        </div> #}
+                        {% include 'components/album-card.html.twig'%}
                     </div>
                 {% endfor %}
             </div>
@@ -68,7 +76,8 @@
         <div class="container">
             <div class="row  gap-3">
                 {%for single in singleType %}
-                    <div class="card col-md-4" style="width: 18rem;">
+                <div class="col-3">
+                    {# <div class="card" style="width: 18rem;">
                         <img src="{{ asset(single.imgPath) }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{ single.title }}</h5>
@@ -76,7 +85,10 @@
                             <p>Total des morceaux : {{ single.tracks|length }}</p>
                             <a href="{{ path('app_album', {'id': single.id}) }}" class="btn btn-primary">Voir plus</a>
                         </div>
-                    </div>
+                    </div> #}
+                {% include 'components/album-card.html.twig' with {album:single}%}
+
+                </div>
                 {% endfor %}
             </div>
         </div>

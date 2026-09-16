@@ -1,0 +1,9 @@
+<div class="card" style="width: 18rem;">
+    <img src="{{ asset(album.imgPath) }}" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">{{ album.title }}</h5>
+        <p class="card-text">{{ album.artist.stageName }}</p>
+        <p>Total des morceaux : {{ album.tracks|length }}</p>
+        <a href="{{ path('app_album', {'id': album.id}) }}" class="btn btn-primary">Voir plus</a>
+    </div>
+</div>
