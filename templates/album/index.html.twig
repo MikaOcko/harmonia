@@ -14,7 +14,14 @@
                 <ul style="list-style:none;">
                     {% for track in album.tracks %}
                         <li>🎵 n°{{ track.number }} - {{ track.title }}</li>
-                        <li>Durée : {{ track.duration }} secondes</li>
+                        <li >Durée : {{ track.duration }} secondes</li>
+                        <li class="mb-1">
+                            Genres :
+                                {% for style in track.styles %}
+                                    <a href="#">{{ style.name }}</a>
+                                    <span> | </span>
+                                {% endfor %}
+                        </li>
                     {% endfor %}
                 </ul>
             </div>
