@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfileController!{% endblock %}
+
+{% block body %}
+    <h1 class="text-center py-3">Profile</h1>
+    <h2 class="text-center py-2">Bienvenue {{ user.username }}</h2>
+    <section class="px-5 py-3">
+        <h3><strong>Informations personnelles</strong></h3>
+        <p>Nom d'utilisateur: {{ user.username }}</p>
+        <p>Adresse email : {{ user.email }}</p>
+        <p>Enregistré le : {{ user.createdAt | date('d/m/y')}}</p>
+    </section>
+    <section class="px-5 py-3">
+        <h3><strong>Playlist</strong></h3>
+
+        {% if user.playlists is empty%}
+            <p>Aucune playlist.</p>
+        {% else %}
+            <ul>
+                {% for playlist in user.playlists %}
+                    <li>{{ playlist.name }} | Nombre de morceaux : {{ playlist.tracks|length }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </section>
+
+    <section class="px-5 py-3">
+        <h3><strong>Favoris</strong></h3>
+
+        {% if user.favorites is empty%}
+            <p>Aucun favoris.</p>
+        {% else %}
+            <ul style="list-style:none;">
+                {% for favorite in user.favorites %}
+                    <li>🎵 {{ favorite.track.title }} | Artiste : {{favorite.track.album.artist.stagename}} | Album : {{ favorite.track.album.title}}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </section>
+     <section class="px-5 py-3">
+        <h3><strong>Historique d'écoute</strong></h3>
+
+        {% if user.listeningLogs is empty%}
+            <p>Aucune écoute.</p>
+        {% else %}
+            <ul style="list-style:none;">
+                {% for listen in user.listeningLogs %}
+                    <li>🎵 {{ listen.track.title }} | Artiste : {{listen.track.album.artist.stagename}} | Album : {{ listen.track.album.title}} | Date : {{listen.createdAt | date('d/m/y') }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </section>
+{% endblock %}

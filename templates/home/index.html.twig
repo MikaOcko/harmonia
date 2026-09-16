@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <h1 class="text-center py-2">Bienvenue chez Simplon records</h1>
+    {# Tous les albums #}
+    {# <section>
+        <h2 class="text-center py-2">Nos artistes</h2>
+        <div class="container">
+            <div class="row  gap-3">
+                {%for album in albums %}
+
+                    <div class="card col-md-4" style="width: 18rem;">
+                        <img src="{{ asset(album.imgPath) }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ album.title }}</h5>
+                            <p class="card-text">{{ album.artist.stageName }}</p>
+                            <a href="href="{{ path('app_album', {'id': album.id}) }}" class="btn btn-primary">Voir plus</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section> #}
+    {# les EP #}
+    <section>
+        <h2 class="text-center py-2">Les EP</h2>
+        <div class="container">
+            <div class="row  gap-3">
+                {%for ep in epType %}
+                    <div class="col-md-4">
+                    {# <div class="card" style="width: 18rem;">
+                        <img src="{{ asset(ep.imgPath) }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ ep.title }}</h5>
+                            <p class="card-text">{{ ep.artist.stageName }}</p>
+                            <p>Total des morceaux : {{ ep.tracks|length }}</p>
+                            <a href="{{ path('app_album', {'id': ep.id}) }}" class="btn btn-primary">Voir plus</a>
+                        </div>
+                    </div> #}
+                    {% include 'components/album-card.html.twig' with {album:ep}%}
+
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+    {# les albums #}
+    <section>
+        <h2 class="text-center py-2">Les albums</h2>
+        <div class="container">
+            <div class="row  gap-3">
+                {%for album in albumType %}
+                    <div class="col-md-4">
+
+                        {# <div class="card" style="width: 18rem;">
+                            <img src="{{ asset(album.imgPath) }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ album.title }}</h5>
+                                <p class="card-text">{{ album.artist.stageName }}</p>
+                                <p>Total des morceaux : {{ album.tracks|length }}</p>
+                                <a href="{{ path('app_album', {'id': album.id}) }}" class="btn btn-primary">Voir plus</a>
+                            </div>
+                        </div> #}
+                        {% include 'components/album-card.html.twig'%}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {# les single #}
+    <section>
+        <h2 class="text-center py-2">Les singles</h2>
+        <div class="container">
+            <div class="row  gap-3">
+                {%for single in singleType %}
+                <div class="col-md-4">
+                    {# <div class="card" style="width: 18rem;">
+                        <img src="{{ asset(single.imgPath) }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ single.title }}</h5>
+                            <p class="card-text">{{ single.artist.stageName }}</p>
+                            <p>Total des morceaux : {{ single.tracks|length }}</p>
+                            <a href="{{ path('app_album', {'id': single.id}) }}" class="btn btn-primary">Voir plus</a>
+                        </div>
+                    </div> #}
+                {% include 'components/album-card.html.twig' with {album:single}%}
+
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
