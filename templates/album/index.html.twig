@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails Album{% endblock %}
+
+{% block body %}
+    <h1 class="text-center py-5">Détails de {{ album.title }}</h1>
+    <div class="container">
+        <div class="col-md-4">
+            <img src="{{ asset(album.imgPath)}}" alt="">
+
+        </div>
+        <div class="col-6">
+            <p>Sortie le {{ album.releaseDate | date('d/m/Y') }}</p>
+            {# <p>Type : {{ album.type }}</p> #}
+            <p>Morceaux :</p>
+            <ul>
+                {% for track in album.tracks %}
+                    <li>{{ track.title }}</li>
+                {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+{% endblock %}
