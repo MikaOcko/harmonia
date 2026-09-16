@@ -18,7 +18,7 @@
                         <li class="mb-1">
                             Genres :
                                 {% for style in track.styles %}
-                                    <a href="#">{{ style.name }}</a>
+                                    <a href="{{ path('app_style')}}">{{ style.name }}</a>
                                     <span> | </span>
                                 {% endfor %}
                         </li>

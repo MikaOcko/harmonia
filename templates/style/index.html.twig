@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Genres{% endblock %}
+
+{% block body %}
+    <h1 class="text-center py-5">Tous les genres</h1>
+    <div class="container d-flex justify-content-center mb-5">
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Total de morceaux</th>
+                <th scope="col">Liste des morceaux</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for style in styles %}
+                    <tr>
+                        <th scope="row" style="color:{{ style.color }};">{{ style.name }}</th>
+                        <td>{{ style.tracks|length }}</td>
+                        <td>
+                            {% for track in style.tracks %} 
+                                <p>🎵 {{ track.title}}</p>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
