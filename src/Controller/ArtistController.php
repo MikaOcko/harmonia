@@ -2,8 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Artist;
+use App\Form\ArtistType;
 use App\Repository\ArtistRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -20,11 +24,22 @@ final class ArtistController extends AbstractController
     }
 
     #[Route('/artist-add', name: 'app_artist_add')]
-    public function addArtist(): Response
+    public function addArtist(EntityManagerInterface $entityManager, Request $request): Response
     {
+        $newArtist = new Artist();
+        $formArtist = $this->createForm(ArtistType::class, $newArtist);
+        $formArtist->handleRequest($request);
 
-        return $this->render('artist/index.html.twig', [
+        if($formArtist->isSubmitted() && $formArtist->isValid()){
+            $newArtist->setCreatedAt(new \DateTimeImmutable());
+            $entityManager->persist($newArtist);
+            $entityManager->flush();
 
+            return $this->redirectToRoute('app_artist');
+        }
+
+        return $this->render('artist/add.html.twig', [
+            'form' => $formArtist,
         ]);
     }
 
@@ -32,7 +47,7 @@ final class ArtistController extends AbstractController
     public function editArtist(): Response
     {
 
-        return $this->render('artist/index.html.twig', [
+        return $this->render('artist/edit.html.twig', [
 
         ]);
     }
