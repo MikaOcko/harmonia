@@ -47,7 +47,6 @@ final class ArtistController extends AbstractController
     public function editArtist($id, EntityManagerInterface $entityManager, Request $request, ArtistRepository $artistRepo): Response
     {
         $artist = $artistRepo->find($id);
-        dump($artist);
 
         $formArtist = $this->createForm(ArtistType::class, $artist);
         $formArtist->handleRequest($request);
