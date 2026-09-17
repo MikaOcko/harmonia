@@ -4,6 +4,9 @@
 
 {% block body %}
     <h1 class="text-center py-5">Tous les artistes</h1>
+    <div class="d-flex justify-content-end mx-5 my-3">
+        <a href="{{ path('app_artist_add')}}" class="btn btn-success"> + Ajouter un artiste</a>
+    </div>
     <div class="container d-flex justify-content-center mb-5">
             <table class="table">
                 <thead>
@@ -11,9 +14,7 @@
                     <th scope="col">Nom</th>
                     <th scope="col">Nombre d'albums</th>
                     <th scope="col">Nom des albums</th>
-                    <th>
-                        <a href="{{ path('app_artist_add')}}" class="btn btn-success"> + </a>
-                    </th>
+                    <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,6 +33,9 @@
                                         </p>
                                     </div>
                                 {% endfor %}
+                            </td>
+                            <td>
+                                <a href="{{ path('app_artist_edit', {'id':artist.id}) }}" class="btn btn-primary">Modifier</a>
                             </td>
                         </tr>
                     {% endfor %}

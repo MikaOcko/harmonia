@@ -43,12 +43,24 @@ final class ArtistController extends AbstractController
         ]);
     }
 
-    #[Route('/artist-edit', name: 'app_artist_edit')]
-    public function editArtist(): Response
+    #[Route('/artist-edit/{id}', name: 'app_artist_edit')]
+    public function editArtist($id, EntityManagerInterface $entityManager, Request $request, ArtistRepository $artistRepo): Response
     {
+        $artist = $artistRepo->find($id);
+        dump($artist);
 
+        $formArtist = $this->createForm(ArtistType::class, $artist);
+        $formArtist->handleRequest($request);
+
+        if($formArtist->isSubmitted() && $formArtist->isValid()){
+            $entityManager->persist($artist);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_artist');
+        }
+        
         return $this->render('artist/edit.html.twig', [
-
+            'form' => $formArtist,
         ]);
     }
 }
