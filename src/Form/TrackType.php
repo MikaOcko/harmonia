@@ -34,10 +34,6 @@ class TrackType extends AbstractType
                 'multiple' => true,
                 'expanded' => true
             ])
-            ->add('album', EntityType::class, [
-                'class' => Album::class,
-                'choice_label' => 'title',
-            ])
         ;
     }
 

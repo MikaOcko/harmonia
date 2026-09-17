@@ -22,9 +22,6 @@
                             {% for track in style.tracks %} 
                                 <div class="d-flex align-item-center justify-content-between py-1">
                                     <p>🎵 {{ track.title}}</p>
-                                    {% if app.user %}
-                                        <a href="{{ path('app_favorite', {'id': track.id}) }}" class="btn btn-success"> + </a>
-                                    {% endif %}
                                 </div>
                             {% endfor %}
                         </td>
