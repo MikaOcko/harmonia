@@ -18,4 +18,22 @@ final class ArtistController extends AbstractController
             'artists' => $artists,
         ]);
     }
+
+    #[Route('/artist-add', name: 'app_artist_add')]
+    public function addArtist(): Response
+    {
+
+        return $this->render('artist/index.html.twig', [
+
+        ]);
+    }
+
+    #[Route('/artist-edit', name: 'app_artist_edit')]
+    public function editArtist(): Response
+    {
+
+        return $this->render('artist/index.html.twig', [
+
+        ]);
+    }
 }
