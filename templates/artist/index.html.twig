@@ -1,36 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Artites{% endblock %}
+{% block title %}Artistes{% endblock %}
 
 {% block body %}
     <h1 class="text-center py-5">Tous les artistes</h1>
-    {# <div class="container d-flex justify-content-center mb-5">
-        <table class="table">
-            <thead>
-                <tr>
-                <th scope="col">Nom</th>
-                <th scope="col">Total de morceaux</th>
-                <th scope="col">Liste des morceaux</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for style in styles %}
+    <div class="container d-flex justify-content-center mb-5">
+            <table class="table">
+                <thead>
                     <tr>
-                        <th scope="row" style="color:{{ style.color }};">{{ style.name }}</th>
-                        <td>{{ style.tracks|length }}</td>
-                        <td>
-                            {% for track in style.tracks %} 
-                                <div class="d-flex align-item-center justify-content-between py-1">
-                                    <p>🎵 {{ track.title}}</p>
-                                    {% if app.user %}
-                                        <a href="{{ path('app_favorite', {'id': track.id}) }}" class="btn btn-success"> + </a>
-                                    {% endif %}
-                                </div>
-                            {% endfor %}
-                        </td>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Nombre d'albums</th>
+                    <th scope="col">Nom des albums</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table> #}
+                </thead>
+                <tbody>
+                    {% for artist in artists %}
+                        <tr>
+                            <th scope="row" >{{ artist.stageName}}</th>
+                            <td>{{ artist.albums|length }}</td>
+                            <td>
+                                {% for album in artist.albums %} 
+                                    <div class="py-1">
+                                        <p>
+                                            💿 
+                                            <a href="{{ path('app_album', {'id': album.id}) }}">
+                                                {{ album.title}}
+                                            </a>
+                                        </p>
+                                    </div>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
     </div>
 {% endblock %}
