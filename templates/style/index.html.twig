@@ -16,7 +16,7 @@
             <tbody>
                 {% for style in styles %}
                     <tr>
-                        <th scope="row" style="color:{{ style.color }};">{{ style.name }}</th>
+                        <th scope="row" style="color:{{ style.color }};" id="{{ style.name}}">{{ style.name }}</th>
                         <td>{{ style.tracks|length }}</td>
                         <td>
                             {% for track in style.tracks %} 

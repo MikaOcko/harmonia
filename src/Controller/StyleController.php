@@ -19,4 +19,17 @@ final class StyleController extends AbstractController
             'styles' => $styles,
         ]);
     }
+
+    #[Route('/style/{name}', name: 'app_style_name')]
+    public function getStyle(string $name, StyleRepository $styleRepo): Response
+    {
+        $style = $styleRepo->findOneBy([
+            'name' => $name,
+        ]);
+
+        return $this->render('style/read.html.twig', [
+            'style' => $style,
+        ]);
+    }
+    
 }
