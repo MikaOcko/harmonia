@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Morceaux{% endblock %}
+
+{% block body %}
+    <h1 class="text-center py-5">Tous les morceaux</h1>
+
+    <div class="container d-flex justify-content-center mb-5">
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Durée</th>
+                    <th scope="col">Nombre d'écoutes</th>
+                    <th scope="col">Nom de l'artiste</th>
+                    <th scope="col">Album</th>
+                    {% if app.user %}
+                        <th scope="col">Actions</th>
+                    {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for track in tracks %}
+                        <tr>
+                            <th>{{ track.title}}</th>
+                            <td>{{ track.duration}} secondes</td>
+                            <td>{{ track.listeningCounter}}</td>
+                            <td>{{ track.album.artist.stageName }}</td>
+                            <td>
+                                Piste n° {{ track.number }} | 
+
+                                <a href="{{ path('app_album', {'id': track.album.id}) }}">
+                                    {{ track.album.title}}
+                                </a>
+                            </td>
+                            {% if is_user_add_track_in_favorite(app.user, track) %}
+                                <td>
+                                    <a href="{{ path('app_favorite', {'id': track.id}) }}" class="btn btn-danger"> - </a>
+                                </td>
+                            {%else %}
+                                <td>
+                                    <a href="{{ path('app_favorite', {'id': track.id}) }}" class="btn btn-success"> + </a>
+                                </td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Artistes{% endblock %}
+
+{% block body %}
+    <h1 class="text-center py-5">Tous les artistes</h1>
+    <div class="d-flex justify-content-end mx-5 my-3">
+        <a href="{{ path('app_artist_add')}}" class="btn btn-success"> + Ajouter un artiste</a>
+    </div>
+    <div class="container d-flex justify-content-center mb-5">
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Nombre d'albums</th>
+                    <th scope="col">Nom des albums</th>
+                    <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for artist in artists %}
+                        <tr>
+                            <th scope="row" >{{ artist.stageName}}</th>
+                            <td>{{ artist.albums|length }}</td>
+                            <td>
+                                {% for album in artist.albums %} 
+                                    <div class="py-1">
+                                        <p>
+                                            💿 
+                                            <a href="{{ path('app_album', {'id': album.id}) }}">
+                                                {{ album.title}}
+                                            </a>
+                                        </p>
+                                    </div>
+                                {% endfor %}
+                            </td>
+                            <td>
+                                <a href="{{ path('app_artist_edit', {'id':artist.id}) }}" class="btn btn-primary">Modifier</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    </div>
+{% endblock %}

@@ -4,6 +4,9 @@
 
 {% block body %}
     <h1 class="text-center py-5">Détails de {{ album.title }}</h1>
+    <div class="d-flex justify-content-end mx-5 my-3">
+        <a href="{{ path('app_track_add', {'id' : album.id}) }}" class="btn btn-success"> + Ajouter un morceau</a>
+    </div>
     <div class="container d-flex justify-content-center mb-5">
         <div class="card" style="width:50%;">
             <img src="{{ asset(album.imgPath)}}" class="card-img-top" alt="...">

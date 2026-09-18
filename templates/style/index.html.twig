@@ -20,7 +20,9 @@
                         <td>{{ style.tracks|length }}</td>
                         <td>
                             {% for track in style.tracks %} 
-                                <a>🎵 {{ track.title}}</p>
+                                <div class="d-flex align-item-center justify-content-between py-1">
+                                    <p>🎵 {{ track.title}}</p>
+                                </div>
                             {% endfor %}
                         </td>
                     </tr>

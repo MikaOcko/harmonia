@@ -12,7 +12,6 @@ final class ProfileController extends AbstractController
     public function index(): Response
     {
         $user = $this->getUser();
-        dump($user);
 
         if($user === null){
             return $this->redirectToRoute('app_home');

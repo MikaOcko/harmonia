@@ -1,15 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfileController!{% endblock %}
+{% block title %}Profile{% endblock %}
 
 {% block body %}
-    <h1 class="text-center py-3">Profile</h1>
-    <h2 class="text-center py-2">Bienvenue {{ user.username }}</h2>
+    <h1 class="text-center py-3">Profile de {{ user.username }}</h1>
     <section class="px-5 py-3">
         <h3><strong>Informations personnelles</strong></h3>
         <p>Nom d'utilisateur: {{ user.username }}</p>
         <p>Adresse email : {{ user.email }}</p>
         <p>Enregistré le : {{ user.createdAt | date('d/m/y')}}</p>
+        <p>Nombre de playlists : {{ user.playlists|length }}</p>
+        <p>Nombre de favoris : {{ user.favorites|length }}</p>
+        <p>Nombre d'écoutes : {{ user.listeningLogs|length }}</p>
     </section>
     <section class="px-5 py-3">
         <h3><strong>Playlist</strong></h3>
@@ -17,9 +19,9 @@
         {% if user.playlists is empty%}
             <p>Aucune playlist.</p>
         {% else %}
-            <ul>
+            <ul style="list-style:none;">
                 {% for playlist in user.playlists %}
-                    <li>{{ playlist.name }} | Nombre de morceaux : {{ playlist.tracks|length }}</li>
+                    <li>❤️ {{ playlist.name }} | Nombre de morceaux : {{ playlist.tracks|length }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
@@ -46,7 +48,7 @@
         {% else %}
             <ul style="list-style:none;">
                 {% for listen in user.listeningLogs %}
-                    <li>🎵 {{ listen.track.title }} | Artiste : {{listen.track.album.artist.stagename}} | Album : {{ listen.track.album.title}} | Date : {{listen.createdAt | date('d/m/y') }}</li>
+                    <li>🎧 {{ listen.track.title }} | Artiste : {{listen.track.album.artist.stagename}} | Album : {{ listen.track.album.title}} | Date : {{listen.createdAt | date('d/m/y') }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
