@@ -4,25 +4,9 @@
 
 {% block body %}
     <h1 class="text-center py-2">Bienvenue chez Simplon records</h1>
-    {# Tous les albums #}
-    {# <section>
-        <h2 class="text-center py-2">Nos artistes</h2>
-        <div class="container">
-            <div class="row  gap-3">
-                {%for album in albums %}
-
-                    <div class="card col-md-4" style="width: 18rem;">
-                        <img src="{{ asset(album.imgPath) }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ album.title }}</h5>
-                            <p class="card-text">{{ album.artist.stageName }}</p>
-                            <a href="href="{{ path('app_album', {'id': album.id}) }}" class="btn btn-primary">Voir plus</a>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section> #}
+    <div class="d-flex justify-content-end mx-5 my-3">
+        <a href="{{ path('app_album_add') }}" class="btn btn-success"> + Ajouter un album</a>
+    </div>
     {# les EP #}
     <section>
         <h2 class="text-center py-2">Les EP</h2>
