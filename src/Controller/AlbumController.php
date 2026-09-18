@@ -57,7 +57,12 @@ final class AlbumController extends AbstractController
                 try {
                     $pictureFile->move($pictureDirectory, $newFilename);
                 } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
+                        $this->addFlash(
+                            'error',
+                            "Impossible de téléverser l’image."
+                        );
+
+                        return $this->redirectToRoute('app_album_add');
                 }
 
                  // updates the 'pictureFilename' property to store the PDF file name
