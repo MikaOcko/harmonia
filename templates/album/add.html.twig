@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Album{% endblock %}
+
+{% block body %}
+    <h1 class="text-center py-5">Ajouter un album</h1>
+
+    {{form_start(form) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.releaseDate) }}
+        {{ form_row(form.type) }}
+        {{ form_row(form.artist) }}
+        {{ form_row(form.picture) }}
+        <button type="submit" class="btn btn-success">Valider</button>
+    {{ form_end(form) }}
+{% endblock %}
