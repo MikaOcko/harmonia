@@ -24,6 +24,9 @@ final class FavoriteController extends AbstractController
 
         // Retrieve track by her id
         $track = $trackRepo->find($id);
+
+        // retrieve all tracks (DEBUG: variable to transfer param page)
+        $tracks = $trackRepo->findAll();
         
         // Check existing favorite
         $favorite = $favoriteRepo->findOneBy([
@@ -46,8 +49,9 @@ final class FavoriteController extends AbstractController
             
         $entityManager->flush();
 
-        return $this->render('profile/index.html.twig', [
-            'user' => $user,
+        return $this->render('track/index.html.twig', [
+            // 'user' => $user,
+            'tracks' => $tracks
         ]);
     }
 }
