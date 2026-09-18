@@ -33,19 +33,18 @@ final class FavoriteController extends AbstractController
 
         if($favorite === null){
             // Add to favorites
-            $favorite = new Favorite;
+            $favorite = new Favorite();
             $favorite->setCreatedAt(new \DateTimeImmutable());
             $favorite 
                 ->setTrack($track)
                 ->setUser($user);
             $entityManager->persist($favorite);
-            $entityManager->flush();
         } else {
             // Remove to favorites
             $entityManager->remove($favorite);
-            $entityManager->flush();
         }
-
+            
+        $entityManager->flush();
 
         return $this->render('profile/index.html.twig', [
             'user' => $user,

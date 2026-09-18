@@ -33,8 +33,11 @@
                                     {{ track.album.title}}
                                 </a>
                             </td>
-                            {% if app.user %}
-                            
+                            {% if is_user_add_track_in_favorite(app.user, track) %}
+                                <td>
+                                    <a href="{{ path('app_favorite', {'id': track.id}) }}" class="btn btn-danger"> - </a>
+                                </td>
+                            {%else %}
                                 <td>
                                     <a href="{{ path('app_favorite', {'id': track.id}) }}" class="btn btn-success"> + </a>
                                 </td>
