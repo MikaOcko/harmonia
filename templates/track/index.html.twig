@@ -35,11 +35,11 @@
                             </td>
                             {% if is_user_add_track_in_favorite(app.user, track) %}
                                 <td>
-                                    <a href="{{ path('app_favorite', {'id': track.id}) }}" class="btn btn-danger"> - </a>
+                                    <a href="{{ path('app_favorite', {'id': track.id}) }}" class="btn btn-danger" id="favorite-button"> - </a>
                                 </td>
                             {%else %}
                                 <td>
-                                    <a href="{{ path('app_favorite', {'id': track.id}) }}" class="btn btn-success"> + </a>
+                                    <a href="{{ path('app_favorite', {'id': track.id}) }}" class="btn btn-success" id="favorite-button"> + </a>
                                 </td>
                             {% endif %}
                         </tr>

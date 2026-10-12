@@ -4,11 +4,15 @@
 
 {% block body %}
     <h1 class="text-center py-5">Ajouter un artiste</h1>
+    <div class="container">
+        <div class="col-6 mx-auto">
+            {{form_start(form) }}
+                {{ form_row(form.stageName) }}
+                {{ form_row(form.country) }}
+                {{ form_row(form.biography) }}
+                <button type="submit" class="btn btn-success">Valider</button>
+            {{ form_end(form) }}
 
-    {{form_start(form) }}
-        {{ form_row(form.stageName) }}
-        {{ form_row(form.country) }}
-        {{ form_row(form.biography) }}
-        <button type="submit" class="btn btn-success">Valider</button>
-    {{ form_end(form) }}
+        </div>
+    </div>
 {% endblock %}
