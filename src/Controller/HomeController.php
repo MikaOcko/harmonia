@@ -14,9 +14,21 @@ final class HomeController extends AbstractController
     public function index(AlbumRepository $albumRepo): Response
     {
         $albums = $albumRepo->findAll();
-        $epType = $albumRepo->findBy(['type' => AlbumType::EP]);
-        $albumType = $albumRepo->findBy(['type' => AlbumType::ALBUM]);
-        $singleType = $albumRepo->findBy(['type' => AlbumType::SINGLE]);
+        $epType = $albumRepo->findBy(
+            ['type' => AlbumType::EP], 
+            ['releaseDate' => 'DESC'],
+            limit : 12
+        );
+        $albumType = $albumRepo->findBy(
+            ['type' => AlbumType::ALBUM], 
+            ['releaseDate' => 'DESC'],
+            limit : 12
+        );
+        $singleType = $albumRepo->findBy(
+            ['type' => AlbumType::SINGLE], 
+            ['releaseDate' => 'DESC'],
+            limit : 12
+        );
 
         // Retourne l'entité User connecté ou null si pas connecté
         $user = $this->getUser();
