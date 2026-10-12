@@ -7,44 +7,57 @@
     <div class="d-flex justify-content-end mx-5 my-3">
         <a href="{{ path('app_album_add') }}" class="btn btn-success"> + Ajouter un album</a>
     </div>
-    {# les EP #}
-    <section>
-        <h2 class="text-center py-2">Les EP</h2>
-        <div class="container">
-            <div class="row  gap-3">
-                {%for ep in epType %}
-                    <div class="col-md-4">
-                        {% include 'components/album-card.html.twig' with {album:ep}%}
-                    </div>
-                {% endfor %}
-
-            </div>
-        </div>
-    </section>
-    {# les albums #}
-    <section>
-        <h2 class="text-center py-2">Les albums</h2>
-        <div class="container">
-            <div class="row  gap-3">
-                {%for album in albumType %}
-                    <div class="col-md-4">
-                        {% include 'components/album-card.html.twig'%}
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-    {# les single #}
-    <section>
-        <h2 class="text-center py-2">Les singles</h2>
-        <div class="container">
-            <div class="row  gap-3">
-                {%for single in singleType %}
-                <div class="col-md-4">
-                    {% include 'components/album-card.html.twig' with {album:single}%}
+    <div class="container">
+        {# les EP #}
+        {# <section>
+            <h2 class="text-center py-2">Les EP</h2>
+                <div class="row">
+                    {%for ep in epType %}
+                        <div class="col-lg-3 col-md-6 col-12">
+                            {% include 'components/album-card.html.twig' with {album:ep}%}
+                        </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
+        </section> #}
+        {% include "components/album-loop.html.twig" with {
+            'title' : 'Les EP',
+            'albums' : epType,
+        } %}
+
+        {# les albums #}
+        {# <section>
+            <h2 class="text-center py-2">Les albums</h2>
+            <div class="container">
+                <div class="row  gap-3">
+                    {%for album in albumType %}
+                        <div class="col-md-4">
+                            {% include 'components/album-card.html.twig'%}
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
-        </div>
-    </section>
+        </section> #}
+        {% include "components/album-loop.html.twig" with {
+            'title' : 'Les albums',
+            'albums' : albumType,
+        } %}
+        {# les single #}
+        {# <section>
+            <h2 class="text-center py-2">Les singles</h2>
+            <div class="container">
+                <div class="row  gap-3">
+                    {%for single in singleType %}
+                    <div class="col-md-4">
+                        {% include 'components/album-card.html.twig' with {album:single}%}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section> #}
+        {% include "components/album-loop.html.twig" with {
+            'title' : 'Les singles',
+            'albums' : singleType,
+        } %}
+    </div>
+    
 {% endblock %}
