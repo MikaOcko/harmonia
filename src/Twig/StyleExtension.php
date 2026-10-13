@@ -29,7 +29,8 @@ final class StyleExtension
     #[AsTwigFunction('get_styles')]
     public function getStyles(): array
     {
-        $styles = $this->styleRepo->findAll();
+        // $styles = $this->styleRepo->findAll();
+        $styles = $this->styleRepo->findBy([], ['name' => 'ASC']);
 
         return $styles;
     }

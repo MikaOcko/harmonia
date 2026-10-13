@@ -19,12 +19,12 @@ final class HomeController extends AbstractController
         //     ['releaseDate' => 'DESC'],
         //     limit : 12
         // );
-        $epType = $albumRepo->findWithRelations(AlbumType::EP, 8);
-        $albumType = $albumRepo->findBy(
-            ['type' => AlbumType::ALBUM], 
-            ['releaseDate' => 'DESC'],
-            limit : 12
-        );
+        $epType = $albumRepo->findWithRelations(AlbumType::EP, 12);
+        // $albumType = $albumRepo->findBy(
+        //     ['type' => AlbumType::ALBUM], 
+        //     ['releaseDate' => 'DESC'],
+        //     limit : 12
+        // );
         $albumType = $albumRepo->findWithRelations(AlbumType::ALBUM, 12);
         // $singleType = $albumRepo->findBy(
         //     ['type' => AlbumType::SINGLE], 

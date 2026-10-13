@@ -14,13 +14,28 @@ class ArtistType extends AbstractType
     {
         $builder
             ->add('stageName', null, [
-                'label' => "Nom de l'artiste"
+                'label' => "Nom de scène",
+                'label_attr' => [
+                    'class' => 'fw-semibold'
+                ],
             ])
             ->add('biography', null, [
-                'label' => "Biographie"
+                'label' => "Biographie",
+                // Attribut HTML du label de l'input
+                'label_attr' => [
+                    'class' => 'fw-semibold'
+                ],
+                // Attribut HTML de la balise INPUT
+                'attr' => [
+                    'rows' => 4,
+                    'placeholder' => 'Biographie de l\'artiste' 
+                ],
             ])
             ->add('country', null, [
                 'label' => "Pays",
+                'label_attr' => [
+                    'class' => 'fw-semibold'
+                ],
             ])
             // ->add('Valider', SubmitType::class)
         ;
