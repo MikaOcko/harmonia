@@ -22,4 +22,6 @@ jobs:
       run: php bin/console -v
     - name: linter on templates
       run: php bin/console lint:twig templates
+    - name: PHPstan
+      run: vendor/bin/phpstan analyse src
    
