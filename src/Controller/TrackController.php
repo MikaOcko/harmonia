@@ -25,7 +25,7 @@ final class TrackController extends AbstractController
     }
 
     #[Route('/track-add/{id}', name: 'app_track_add')]
-    public function addTrack($id, EntityManagerInterface $entityManager, Request $request, AlbumRepository $albumRepo): Response
+    public function addTrack(int $id, EntityManagerInterface $entityManager, Request $request, AlbumRepository $albumRepo): Response
     {
         $album = $albumRepo->find($id);
         $newTrack = new Track();
@@ -33,14 +33,14 @@ final class TrackController extends AbstractController
         $formTrack = $this->createForm(TrackType::class, $newTrack);
         $formTrack->handleRequest($request);
 
-        if($formTrack->isSubmitted() && $formTrack->isValid()){
+        if ($formTrack->isSubmitted() && $formTrack->isValid()) {
             $newTrack->setCreatedAt(new \DateTimeImmutable());
             $newTrack->setListeningCounter(0);
             $newTrack->setAlbum($album);
             $entityManager->persist($newTrack);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_album', ['id'=> $album->getId()]);
+            return $this->redirectToRoute('app_album', ['id' => $album->getId()]);
         }
 
         return $this->render('track/add.html.twig', [

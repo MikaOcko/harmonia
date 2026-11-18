@@ -30,7 +30,7 @@ final class ArtistController extends AbstractController
         $formArtist = $this->createForm(ArtistType::class, $newArtist);
         $formArtist->handleRequest($request);
 
-        if($formArtist->isSubmitted() && $formArtist->isValid()){
+        if ($formArtist->isSubmitted() && $formArtist->isValid()) {
             $newArtist->setCreatedAt(new \DateTimeImmutable());
             $entityManager->persist($newArtist);
             $entityManager->flush();
@@ -44,20 +44,20 @@ final class ArtistController extends AbstractController
     }
 
     #[Route('/artist-edit/{id}', name: 'app_artist_edit')]
-    public function editArtist($id, EntityManagerInterface $entityManager, Request $request, ArtistRepository $artistRepo): Response
+    public function editArtist(int $id, EntityManagerInterface $entityManager, Request $request, ArtistRepository $artistRepo): Response
     {
         $artist = $artistRepo->find($id);
 
         $formArtist = $this->createForm(ArtistType::class, $artist);
         $formArtist->handleRequest($request);
 
-        if($formArtist->isSubmitted() && $formArtist->isValid()){
+        if ($formArtist->isSubmitted() && $formArtist->isValid()) {
             $entityManager->persist($artist);
             $entityManager->flush();
 
             return $this->redirectToRoute('app_artist');
         }
-        
+
         return $this->render('artist/edit.html.twig', [
             'form' => $formArtist,
         ]);
