@@ -46,11 +46,11 @@ jobs:
       run: vendor/bin/php-cs-fixer fix --dry-run --diff
 
     - name: database creation
-      run: php bin/console doctrine:database:create --if-not-exists
+      run: php bin/console doctrine:database:create --if-not-exists --env=test
     - name: database migration
-      run: php bin/console doctrine:migrations:migrate --no-interaction
+      run: php bin/console doctrine:migrations:migrate --no-interaction --env=test
     - name: fixtures migration
-      run: php bin/console doctrine:fixtures:load
+      run: php bin/console doctrine:fixtures:load --env=test
 
     - name: Run functionnal and unit tests
       run: vendor/bin/phpunit tests/HomeControllerTest.php
