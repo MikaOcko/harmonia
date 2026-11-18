@@ -7,16 +7,15 @@ jobs:
   backend :
     runs-on: ubuntu-latest
     env:
-      # DATABASE_URL: ${{ secrets.DATABASE_URL }}
-      DATABASE_URL: "mysql://root:root@127.0.0.1:3506/harmonia?serverVersion=10.6.0-MariaDBcharset=utf8mb4"
-      ES_HOST: "localhost"
-      ES_PORT: "8000"
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      ES_HOST: ${{ secrets.ES_HOST }}
+      ES_PORT: ${{ secrets.ES_PORT }}
     services:
       mysql:
         image: mariadb:10.6
         env:
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_USER_PASSWORD: root
+          MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
+          MYSQL_USER_PASSWORD: ${{ secrets.MYSQL_USER_PASSWORD }}
         ports:
           - 3506:3306
         options: >-
