@@ -31,5 +31,4 @@ final class StyleController extends AbstractController
             'style' => $style,
         ]);
     }
-    
 }

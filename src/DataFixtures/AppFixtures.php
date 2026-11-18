@@ -23,12 +23,12 @@ class AppFixtures extends Fixture
         ArtistFactory::createMany(20);
         // Style fixture
         // StyleFactory::createMany(5);
-        $genres = ['rock','reggae','classique', 'jazz', 'pop', 'hip-hop', 'electro', 'blues', 'metal', 'funk', 'soul', 'country', 'folk', 'punk', 'disco', 'rnb', 'rap', 'house', 'techno', 'ambient', 'salsa', 'bossa nova', 'ska', 'gospel', 'grime', 'dubstep', 'afrobeats', 'drill', 'synthwave'];
+        $genres = ['rock', 'reggae', 'classique', 'jazz', 'pop', 'hip-hop', 'electro', 'blues', 'metal', 'funk', 'soul', 'country', 'folk', 'punk', 'disco', 'rnb', 'rap', 'house', 'techno', 'ambient', 'salsa', 'bossa nova', 'ska', 'gospel', 'grime', 'dubstep', 'afrobeats', 'drill', 'synthwave'];
         foreach ($genres as $value) {
             StyleFactory::createOne([
-                'name' => $value
+                'name' => $value,
             ]);
-        };
+        }
         // User fixture
         UserFactory::createMany(30);
         // Album fixture

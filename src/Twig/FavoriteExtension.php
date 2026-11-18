@@ -10,13 +10,10 @@ use Twig\Attribute\AsTwigFunction;
 
 final class FavoriteExtension
 {
-
     public function __construct(
-        private FavoriteRepository $favoriteRepository
-    )
-    {
+        private FavoriteRepository $favoriteRepository,
+    ) {
     }
-
 
     // If your filter generates SAFE HTML, you should add the "isSafe" argument:
     // #[AsTwigFilter(name: 'filter_name', isSafe: ['html'])]
@@ -32,22 +29,22 @@ final class FavoriteExtension
     #[AsTwigFunction('is_user_add_track_in_favorite')]
     public function isUserAddTrackInFavorite(?User $user, Track $track): bool
     {
-        if($user === null){
+        if (null === $user) {
             return false;
         }
 
-        $favoriteEntity = $this->favoriteRepository->findOneBy(['user' => $user, 'track' =>$track]);
+        $favoriteEntity = $this->favoriteRepository->findOneBy(['user' => $user, 'track' => $track]);
 
-        if($favoriteEntity !== null){
+        if (null !== $favoriteEntity) {
             return true;
-        } else {
-            return false;
         }
+
+        return false;
+
         // foreach($user->getFavorites() as $favorite){
         //     if($favorite->getTrack()->getId() === $track->getId()){
         //         return true;
         //     }
         // }
-
     }
 }

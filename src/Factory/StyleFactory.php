@@ -3,11 +3,7 @@
 namespace App\Factory;
 
 use App\Entity\Style;
-use App\Repository\StyleRepository;
-use Doctrine\ORM\EntityRepository;
 use Zenstruck\Foundry\Persistence\PersistentObjectFactory;
-use Zenstruck\Foundry\Persistence\Proxy;
-use Zenstruck\Foundry\Persistence\ProxyRepositoryDecorator;
 
 /**
  * @extends PersistentObjectFactory<Style>
@@ -36,8 +32,7 @@ final class StyleFactory extends PersistentObjectFactory
      */
     #[\Override]
     protected function defaults(): array|callable
-    {   
-        
+    {
         return [
             'color' => self::faker()->hexColor(),
             'createdAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),

@@ -21,7 +21,7 @@ final class AlbumController extends AbstractController
     {
         $album = $albumRepo->find($id);
 
-        if ($album === null) {
+        if (null === $album) {
             return $this->redirectToRoute('app_home');
         }
 
@@ -35,14 +35,13 @@ final class AlbumController extends AbstractController
         EntityManagerInterface $entityManager,
         Request $request,
         SluggerInterface $slugger,
-        #[Autowire('%kernel.project_dir%/public/uploads')] string $pictureDirectory
+        #[Autowire('%kernel.project_dir%/public/uploads')] string $pictureDirectory,
     ): Response {
         $newAlbum = new Album();
         $formAlbum = $this->createForm(AlbumType::class, $newAlbum);
         $formAlbum->handleRequest($request);
 
         if ($formAlbum->isSubmitted() && $formAlbum->isValid()) {
-
             // Picture donwload
             $pictureFile = $formAlbum->get('picture')->getData();
 
@@ -50,7 +49,7 @@ final class AlbumController extends AbstractController
                 $originalFilename = pathinfo($pictureFile->getClientOriginalName(), PATHINFO_FILENAME);
                 // this is needed to safely include the file name as part of the URL
                 $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename . '-' . uniqid() . '.' . $pictureFile->guessExtension();
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$pictureFile->guessExtension();
 
                 // Move the file to the directory where brochures are stored
                 try {
@@ -58,7 +57,7 @@ final class AlbumController extends AbstractController
                 } catch (FileException $e) {
                     $this->addFlash(
                         'error',
-                        "Impossible de téléverser l’image."
+                        'Impossible de téléverser l’image.'
                     );
 
                     return $this->redirectToRoute('app_album_add');
@@ -66,7 +65,7 @@ final class AlbumController extends AbstractController
 
                 // updates the 'pictureFilename' property to store the PDF file name
                 // instead of its contents
-                $newAlbum->setImgPath('uploads/' . $newFilename);
+                $newAlbum->setImgPath('uploads/'.$newFilename);
                 $newAlbum->setPicture($safeFilename);
             }
 

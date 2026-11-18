@@ -8,11 +8,9 @@ use Twig\Attribute\AsTwigFunction;
 
 final class StyleExtension
 {
-
     public function __construct(
-        private StyleRepository $styleRepo
-    ){
-
+        private StyleRepository $styleRepo,
+    ) {
     }
 
     // If your filter generates SAFE HTML, you should add the "isSafe" argument:

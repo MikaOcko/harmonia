@@ -20,7 +20,7 @@ class AlbumType extends AbstractType
                 'label' => "Titre de l'album",
             ])
             ->add('releaseDate', null, [
-                'label' => "Date de sortie",
+                'label' => 'Date de sortie',
             ])
             ->add('picture', FileType::class, [
                 'label' => "Jaquette de l'album",
@@ -31,11 +31,11 @@ class AlbumType extends AbstractType
                         maxSize: '1024k',
                         extensions: ['jpg', 'jpeg', 'png'],
                         extensionsMessage: 'Télécharger une image au format .jpg, .jpeg ou .png',
-                    )
+                    ),
                 ],
-            ] )
+            ])
             ->add('type', null, [
-                'label' => "Type de CD",
+                'label' => 'Type de CD',
             ])
             ->add('artist', EntityType::class, [
                 'class' => Artist::class,

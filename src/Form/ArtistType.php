@@ -13,13 +13,13 @@ class ArtistType extends AbstractType
     {
         $builder
             ->add('stageName', null, [
-                'label' => "Nom de l'artiste"
+                'label' => "Nom de l'artiste",
             ])
             ->add('biography', null, [
-                'label' => "Biographie"
+                'label' => 'Biographie',
             ])
             ->add('country', null, [
-                'label' => "Pays",
+                'label' => 'Pays',
             ])
         ;
     }

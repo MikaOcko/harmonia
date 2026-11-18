@@ -3,11 +3,7 @@
 namespace App\Factory;
 
 use App\Entity\Favorite;
-use App\Repository\FavoriteRepository;
-use Doctrine\ORM\EntityRepository;
 use Zenstruck\Foundry\Persistence\PersistentObjectFactory;
-use Zenstruck\Foundry\Persistence\Proxy;
-use Zenstruck\Foundry\Persistence\ProxyRepositoryDecorator;
 
 /**
  * @extends PersistentObjectFactory<Favorite>

@@ -22,5 +22,6 @@ jobs:
       run: php bin/console lint:twig templates
     - name: PHPstan
       run: vendor/bin/phpstan analyse src --level=3
-
+    - name: CS fixer
+      run: vendor/bin/php-cs-fixer fix --dry-run --diff
    

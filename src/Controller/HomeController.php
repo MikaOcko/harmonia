@@ -25,7 +25,7 @@ final class HomeController extends AbstractController
             'albums' => $albums,
             'epType' => $epType,
             'albumType' => $albumType,
-            'singleType' => $singleType
+            'singleType' => $singleType,
         ]);
     }
 }

@@ -3,11 +3,7 @@
 namespace App\Factory;
 
 use App\Entity\Artist;
-use App\Repository\ArtistRepository;
-use Doctrine\ORM\EntityRepository;
 use Zenstruck\Foundry\Persistence\PersistentObjectFactory;
-use Zenstruck\Foundry\Persistence\Proxy;
-use Zenstruck\Foundry\Persistence\ProxyRepositoryDecorator;
 
 /**
  * @extends PersistentObjectFactory<Artist>
@@ -40,8 +36,8 @@ final class ArtistFactory extends PersistentObjectFactory
         return [
             'country' => self::faker()->word(),
             'stageName' => self::faker()->name(),
-            'biography' =>self::faker()->sentence(10),
-            'createdAt' =>\DateTimeImmutable::createFromMutable(self::faker()->dateTime()),
+            'biography' => self::faker()->sentence(10),
+            'createdAt' => \DateTimeImmutable::createFromMutable(self::faker()->dateTime()),
         ];
     }
 

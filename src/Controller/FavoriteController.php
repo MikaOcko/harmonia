@@ -18,7 +18,7 @@ final class FavoriteController extends AbstractController
         // Retrieve user
         $user = $this->getUser();
         // Check connected user
-        if ($user === null) {
+        if (null === $user) {
             return $this->redirectToRoute('app_login');
         }
 
@@ -34,7 +34,7 @@ final class FavoriteController extends AbstractController
             'track' => $track,
         ]);
 
-        if ($favorite === null) {
+        if (null === $favorite) {
             // Add to favorites
             $favorite = new Favorite();
             $favorite->setCreatedAt(new \DateTimeImmutable());
@@ -51,7 +51,7 @@ final class FavoriteController extends AbstractController
 
         return $this->render('track/index.html.twig', [
             // 'user' => $user,
-            'tracks' => $tracks
+            'tracks' => $tracks,
         ]);
     }
 }

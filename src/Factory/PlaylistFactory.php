@@ -3,11 +3,7 @@
 namespace App\Factory;
 
 use App\Entity\Playlist;
-use App\Repository\PlaylistRepository;
-use Doctrine\ORM\EntityRepository;
 use Zenstruck\Foundry\Persistence\PersistentObjectFactory;
-use Zenstruck\Foundry\Persistence\Proxy;
-use Zenstruck\Foundry\Persistence\ProxyRepositoryDecorator;
 
 /**
  * @extends PersistentObjectFactory<Playlist>
@@ -42,7 +38,7 @@ final class PlaylistFactory extends PersistentObjectFactory
             'isPublic' => self::faker()->boolean(0.5),
             'name' => self::faker()->sentence(2),
             'user' => UserFactory::random(),
-            'tracks' => TrackFactory::randomRange(1,20),
+            'tracks' => TrackFactory::randomRange(1, 20),
         ];
     }
 

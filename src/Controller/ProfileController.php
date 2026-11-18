@@ -13,7 +13,7 @@ final class ProfileController extends AbstractController
     {
         $user = $this->getUser();
 
-        if($user === null){
+        if (null === $user) {
             return $this->redirectToRoute('app_home');
         }
 

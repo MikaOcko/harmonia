@@ -3,11 +3,7 @@
 namespace App\Factory;
 
 use App\Entity\Track;
-use App\Repository\TrackRepository;
-use Doctrine\ORM\EntityRepository;
 use Zenstruck\Foundry\Persistence\PersistentObjectFactory;
-use Zenstruck\Foundry\Persistence\Proxy;
-use Zenstruck\Foundry\Persistence\ProxyRepositoryDecorator;
 
 /**
  * @extends PersistentObjectFactory<Track>
@@ -43,9 +39,9 @@ final class TrackFactory extends PersistentObjectFactory
             'duration' => self::faker()->randomNumber(),
             'isExplicitContent' => self::faker()->boolean(0.5),
             'listeningCounter' => self::faker()->randomNumber(),
-            'number' => self::faker()->numberBetween(1,15),
+            'number' => self::faker()->numberBetween(1, 15),
             'title' => self::faker()->sentence(5),
-            'styles' => StyleFactory::randomRange(1,5),
+            'styles' => StyleFactory::randomRange(1, 5),
         ];
     }
 

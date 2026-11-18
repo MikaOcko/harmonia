@@ -2,8 +2,6 @@
 
 namespace App\Form;
 
-use App\Entity\Album;
-use App\Entity\Playlist;
 use App\Entity\Style;
 use App\Entity\Track;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -17,22 +15,22 @@ class TrackType extends AbstractType
     {
         $builder
             ->add('title', null, [
-                'label' => "Titre de la chanson",
+                'label' => 'Titre de la chanson',
             ])
             ->add('duration', null, [
                 'label' => 'Durée (en secondes)',
             ])
             ->add('number', null, [
-                'label' => "Piste n°",
+                'label' => 'Piste n°',
             ])
             ->add('isExplicitContent', null, [
-                'label' => "Contenu explicite ?"
+                'label' => 'Contenu explicite ?',
             ])
             ->add('styles', EntityType::class, [
                 'class' => Style::class,
                 'choice_label' => 'name',
                 'multiple' => true,
-                'expanded' => true
+                'expanded' => true,
             ])
         ;
     }
