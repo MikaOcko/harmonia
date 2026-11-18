@@ -9,10 +9,22 @@ jobs:
     env:
       # DATABASE_URL: ${{ secrets.DATABASE_URL }}
       DATABASE_URL: "mysql://root:root@127.0.0.1:3506/harmonia"
-      APP_ENV: test
       ES_HOST: localhost
       ES_PORT: 8000
-
+    services:
+      mysql:
+        image: mariadb:10.6
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_USER_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+          
     steps:
     - name: checkout github
       uses: actions/checkout@v7
