@@ -18,5 +18,8 @@ jobs:
       run: php -v
     - name: dependencies installation
       run: composer install --prefer-dist --no-interaction
-    # - name: Symfony installation
+    - name: check Symfony version
+      run: symfony -v
+    # - name: lint
+    #   run: 
    
