@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: ci
     env:
-      DATABASE_URL: ${{ secrets.DATABASE_URL }}
-      # DATABASE_URL: "mysql://root:root@127.0.0.1:3506/harmonia?serverVersion=10.6.0-MariaDBcharset=utf8mb4"
+      # DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      DATABASE_URL: "mysql://root:root@127.0.0.1:3506/harmonia?serverVersion=10.6.0-MariaDBcharset=utf8mb4"
       ES_HOST: "localhost"
       ES_PORT: "8000"
     services:
