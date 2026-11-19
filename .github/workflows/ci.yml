@@ -34,7 +34,6 @@ jobs:
       with:
         php-version: '8.4'
         extensions: mbstring, xml, ctype, iconv, intl, pdo, pdo_mysql, dom, filter, gd, iconv, json, mbstring
-    # - name: check PHP version
     #   run: php -v
     - name: dependencies installation
       run: composer install --prefer-dist --no-interaction
