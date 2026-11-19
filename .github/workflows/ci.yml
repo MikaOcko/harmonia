@@ -64,7 +64,4 @@ jobs:
       run: php bin/console doctrine:fixtures:load --env=test --no-interaction
 
     - name: Run functionnal and unit tests
-      run: vendor/bin/phpunit tests/HomeControllerTest.php
-
-
-   
+      run: vendor/bin/phpunit tests/HomeControllerTest.php  
