@@ -12,6 +12,7 @@ jobs:
       ES_HOST: ${{ secrets.ES_HOST }}
       ES_PORT: ${{ secrets.ES_PORT }}
       KERNEL_CLASS: ${{ secrets.KERNEL_CLASS }}
+      APP_SECRET: ${{ secrets.APP_SECRET }}
     services:
       mysql:
         image: mariadb:10.6
@@ -40,8 +41,8 @@ jobs:
     - name: create .env
       run: |
         touch .env
-        echo DATABASE_URL=${{secrets.DATABASE_URL}} >> .env
-        echo DEFAULT_URI=${{secrets.DEFAULT_URI}} >> .env
+        echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
+        echo DEFAULT_URI=${{ secrets.DEFAULT_URI }} >> .env
         echo MYSQL_ROOT_PASSWORD=${{ secrets.MYSQL_ROOT_PASSWORD }} >> .env
         echo MYSQL_USER_PASSWORD=${{ secrets.MYSQL_USER_PASSWORD }} >> .env
         echo ES_HOST=${{ secrets.ES_HOST }} >> .env
@@ -49,8 +50,8 @@ jobs:
     - name: create .env.test
       run: |
         touch .env.test
-        echo KERNEL_CLASS=${{secrets.KERNEL_CLASS}} >> .env.test
-        echo APP_SECRET=${{secrets.APP_SECRET}} >> .env.test
+        echo KERNEL_CLASS=${{ secrets.KERNEL_CLASS }} >> .env.test
+        echo APP_SECRET=${{ secrets.APP_SECRET }} >> .env.test
     - name: dependencies installation
       run: composer install --prefer-dist --no-interaction
     - name: linter on templates
