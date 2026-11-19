@@ -11,6 +11,7 @@ jobs:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
       ES_HOST: ${{ secrets.ES_HOST }}
       ES_PORT: ${{ secrets.ES_PORT }}
+      KERNEL_CLASS: ${{ secrets.KERNEL_CLASS }}
     services:
       mysql:
         image: mariadb:10.6
