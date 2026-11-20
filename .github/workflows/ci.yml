@@ -13,6 +13,7 @@ jobs:
       ES_PORT: ${{ secrets.ES_PORT }}
       KERNEL_CLASS: ${{ secrets.KERNEL_CLASS }}
       APP_SECRET: ${{ secrets.APP_SECRET }}
+      DEFAULT_URI: ${{ secrets.DEFAULT_URI }}
     services:
       mysql:
         image: mariadb:10.6
