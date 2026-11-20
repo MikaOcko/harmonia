@@ -37,11 +37,9 @@ jobs:
       with:
         php-version: '8.4'
         extensions: mbstring, xml, ctype, iconv, intl, pdo, pdo_mysql, dom, filter, gd, iconv, json, mbstring
-    # - name: check PHP version
-    #   run: php -v
-    # - name: create .env
-    #   run: |
-    #     touch .env
+    - name: create .env
+      run: |
+        touch .env
     - name: dependencies installation
       run: composer install --prefer-dist --no-interaction
     - name: linter on templates
@@ -50,13 +48,11 @@ jobs:
       run: vendor/bin/phpstan analyse src --level=3
     - name: CS fixer
       run: vendor/bin/php-cs-fixer fix --dry-run --diff
-
     - name: database creation
       run: php bin/console doctrine:database:create --if-not-exists --env=test
     - name: database migration
       run: php bin/console doctrine:migrations:migrate --no-interaction --env=test
     - name: fixtures migration
       run: php bin/console doctrine:fixtures:load --env=test --no-interaction
-
     - name: Run functionnal and unit tests
-      run: vendor/bin/phpunit tests/HomeControllerTest.php  
+      run: vendor/bin/phpunit tests/HomeControllerTest.php
